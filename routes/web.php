@@ -23,5 +23,9 @@ Route::group(["middleware"=> 'role:super-admin'], function(){
     Route::resource('admin/user', 'Admin\\UserController');
 });
 
+Route::group(["middleware"=> 'auth'], function(){
+    Route::view('/admin', 'admin.dashboard');
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
 
